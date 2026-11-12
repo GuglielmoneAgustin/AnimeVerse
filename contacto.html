@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Formulario de contacto de AnimeVerse.">
+  <title>AnimeVerse | Contacto</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <header class="encabezado">
+    <div class="contenedor encabezado__interno">
+      <a class="logo" href="index.html">
+        <span class="logo__icono" aria-hidden="true">★</span>
+        <span class="logo__texto">Anime<span>Verse</span></span>
+        <small class="logo__lema">El ranking de MyAnimeList</small>
+      </a>
+      <nav aria-label="Navegación principal">
+        <ul class="menu">
+          <li><a class="menu__link" href="index.html">Home</a></li>
+          <li><a class="menu__link activo" href="contacto.html" aria-current="page">Contacto</a></li>
+          <li><a class="menu__link" href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contenedor">
+    <section class="hero">
+      <h1>Contacto</h1>
+      <p>¿Querés recomendarnos un anime o reportar un error? Escribinos.</p>
+    </section>
+
+    <div class="contacto">
+      <figure class="contacto__imagen">
+        <img src="img/contacto.svg" alt="Ilustración de una ciudad de noche con un sobre y un avión de papel" width="480" height="480">
+      </figure>
+
+      <form id="formulario" class="formulario" novalidate>
+        <div class="campo">
+          <label for="nombre">Nombre *</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre">
+        </div>
+
+        <div class="campo">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" placeholder="tu@email.com">
+        </div>
+
+        <div class="campo">
+          <label for="edad">Edad *</label>
+          <input type="number" id="edad" name="edad" min="10" max="99" placeholder="Ej: 20">
+        </div>
+
+        <div class="campo">
+          <label for="genero">Género favorito *</label>
+          <select id="genero" name="genero">
+            <option value="">Elegí una opción…</option>
+            <option value="shonen">Shōnen</option>
+            <option value="seinen">Seinen</option>
+            <option value="shojo">Shōjo</option>
+            <option value="isekai">Isekai</option>
+            <option value="mecha">Mecha</option>
+          </select>
+        </div>
+
+        <fieldset class="campo campo--grupo">
+          <legend>Preferencia de respuesta *</legend>
+          <label><input type="radio" name="respuesta" value="email"> Email</label>
+          <label><input type="radio" name="respuesta" value="telefono"> Teléfono</label>
+          <label><input type="radio" name="respuesta" value="whatsapp"> WhatsApp</label>
+        </fieldset>
+
+        <div class="campo">
+          <label for="mensaje">Mensaje *</label>
+          <textarea id="mensaje" name="mensaje" rows="5" placeholder="Escribí tu mensaje"></textarea>
+        </div>
+
+        <div class="campo campo--check">
+          <label><input type="checkbox" id="terminos" name="terminos"> Acepto que se usen mis datos para responder *</label>
+        </div>
+
+        <div class="formulario__acciones">
+          <button type="submit" class="boton">Enviar</button>
+          <button type="reset" class="boton boton--secundario">Limpiar</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor">
+      <p class="pie__dato pie__dato--equipo"><strong>Integrantes:</strong> Agustín Guglielmone · Natanael Zubiri</p>
+      <p class="pie__dato pie__dato--github"><a href="https://github.com/GuglielmoneAgustin/AnimeVerse" target="_blank" rel="noopener">Repositorio en GitHub</a></p>
+      <p class="pie__dato pie__dato--api">Datos: <a href="https://jikan.moe" target="_blank" rel="noopener">Jikan API (MyAnimeList)</a></p>
+      <p class="pie__dato pie__dato--instituto">Diseño Web 2026 · ISFT N° 194</p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/contacto.js"></script>
+</body>
+</html>
