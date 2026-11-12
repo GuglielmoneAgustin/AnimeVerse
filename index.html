@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Top de animes según MyAnimeList, consumido desde la API Jikan.">
+  <title>AnimeVerse | Top Animes</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <header class="encabezado">
+    <div class="contenedor encabezado__interno">
+      <a class="logo" href="index.html">
+        <span class="logo__icono" aria-hidden="true">★</span>
+        <span class="logo__texto">Anime<span>Verse</span></span>
+        <small class="logo__lema">El ranking de MyAnimeList</small>
+      </a>
+      <nav aria-label="Navegación principal">
+        <ul class="menu">
+          <li><a class="menu__link activo" href="index.html" aria-current="page">Home</a></li>
+          <li><a class="menu__link" href="contacto.html">Contacto</a></li>
+          <li><a class="menu__link" href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contenedor">
+    <section class="hero">
+      <h1>Top Animes de MyAnimeList</h1>
+      <p>Los animes mejor puntuados por la comunidad, actualizados en tiempo real desde la API Jikan.</p>
+    </section>
+
+    <section aria-labelledby="titulo-listado">
+      <h2 id="titulo-listado" class="titulo-seccion">Ranking</h2>
+      <div id="estado" class="estado" aria-live="polite"></div>
+      <div id="cards" class="cards"></div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor">
+      <p class="pie__dato pie__dato--equipo"><strong>Integrantes:</strong> Agustín Guglielmone · Natanael Zubiri</p>
+      <p class="pie__dato pie__dato--github"><a href="https://github.com/GuglielmoneAgustin/AnimeVerse" target="_blank" rel="noopener">Repositorio en GitHub</a></p>
+      <p class="pie__dato pie__dato--api">Datos: <a href="https://jikan.moe" target="_blank" rel="noopener">Jikan API (MyAnimeList)</a></p>
+      <p class="pie__dato pie__dato--instituto">Diseño Web 2026 · ISFT N° 194</p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
