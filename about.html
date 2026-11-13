@@ -3,17 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="El equipo y el proyecto detrás de AnimeVerse.">
+  <meta name="description" content="El equipo y el proyecto detrás de AnimeVerse, el ranking de Studio Ghibli.">
   <title>AnimeVerse | About</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&amp;family=Nunito:wght@400;600;700&amp;display=swap">
   <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
   <header class="encabezado">
     <div class="contenedor encabezado__interno">
       <a class="logo" href="index.html">
-        <span class="logo__icono" aria-hidden="true">★</span>
+        <span class="logo__icono" aria-hidden="true">☁</span>
         <span class="logo__texto">Anime<span>Verse</span></span>
-        <small class="logo__lema">El ranking de MyAnimeList</small>
+        <small class="logo__lema">El ranking de Studio Ghibli</small>
       </a>
       <nav aria-label="Navegación principal">
         <ul class="menu">
@@ -28,7 +31,7 @@
   <main class="contenedor">
     <section class="hero">
       <h1>About Us</h1>
-      <p>Somos el grupo que desarrolló AnimeVerse, un sitio que muestra el top de animes de MyAnimeList.</p>
+      <p>Somos el grupo que desarrolló AnimeVerse, un sitio que muestra el ranking de las películas de Studio Ghibli.</p>
     </section>
 
     <section aria-labelledby="titulo-equipo">
@@ -38,7 +41,7 @@
           <img src="img/agustin-guglielmone.jpg" alt="Foto de Agustín Guglielmone" width="300" height="300">
           <h3>Agustín Guglielmone</h3>
           <p class="integrante__rol">Consumo de la API y JavaScript</p>
-          <p>Fetch a Jikan, clase Anime, manejo de estados loading, success y error, renderizado de las cards y validación del formulario.</p>
+          <p>Fetch a la Studio Ghibli API, clase Pelicula, manejo de estados loading, success y error, renderizado de las cards y validación del formulario.</p>
         </article>
         <article class="integrante">
           <img src="img/natanael-zubiri.jpg" alt="Foto de Natanael Zubiri" width="300" height="300">
@@ -54,17 +57,17 @@
 
       <article class="info__bloque">
         <h3>Temática</h3>
-        <p>Elegimos el anime porque es una temática visual, con portadas llamativas que lucen muy bien en formato card. El sitio funciona como una vitrina del ranking de MyAnimeList.</p>
+        <p>Elegimos las películas de Studio Ghibli porque son un clásico del anime, con pósters muy ilustrados que lucen muy bien en formato card. El sitio funciona como una vitrina de todas las películas del estudio, ordenadas según el puntaje de la crítica.</p>
       </article>
 
       <article class="info__bloque">
         <h3>Decisiones de diseño</h3>
-        <p>La paleta usa un fondo azul noche (<code>#0f172a</code>) con cards en <code>#1e293b</code>, y dos acentos neón: rosa sakura (<code>#f43f5e</code>) y celeste (<code>#38bdf8</code>), inspirados en la estética de los posters de anime y las ciudades nocturnas japonesas. Las cards usan imágenes en formato póster (3:4), bordes redondeados y un hover con elevación y brillo rosado.</p>
+        <p>La paleta usa tonos suaves y pasteles, como los paisajes de las películas: un fondo verde menta (<code>#f3f8f1</code>), cards blancas y dos acentos, durazno (<code>#f2a191</code>) y celeste cielo (<code>#8ecae6</code>). Las tipografías son redondeadas (Fredoka y Nunito) para acompañar el estilo amable del estudio. Las cards usan el póster en formato 3:4, bordes redondeados y un hover con elevación y sombra durazno.</p>
       </article>
 
       <article class="info__bloque">
         <h3>La API</h3>
-        <p>Usamos <a href="https://docs.api.jikan.moe/" target="_blank" rel="noopener">Jikan API v4</a>, una API pública no oficial de MyAnimeList que no requiere registro ni API key. Endpoint: <code>https://api.jikan.moe/v4/top/anime?limit=12</code>. La lista llega dentro de la propiedad <code>data</code> y cada anime trae su imagen, título, tipo, episodios, puntaje y géneros en una sola petición.</p>
+        <p>Usamos la <a href="https://ghibliapi.vercel.app" target="_blank" rel="noopener">Studio Ghibli API</a>, una API pública que no requiere registro ni API key. Endpoint: <code>https://ghibliapi.vercel.app/films</code>. Devuelve directamente un array con las 22 películas, y cada una trae su póster, título, director, año, duración y puntaje de la crítica en una sola petición. En el sitio se ordenan por puntaje y se muestran todas.</p>
       </article>
 
       <article class="info__bloque">
@@ -85,7 +88,7 @@
     <div class="contenedor">
       <p class="pie__dato pie__dato--equipo"><strong>Integrantes:</strong> Agustín Guglielmone · Natanael Zubiri</p>
       <p class="pie__dato pie__dato--github"><a href="https://github.com/GuglielmoneAgustin/AnimeVerse" target="_blank" rel="noopener">Repositorio en GitHub</a></p>
-      <p class="pie__dato pie__dato--api">Datos: <a href="https://jikan.moe" target="_blank" rel="noopener">Jikan API (MyAnimeList)</a></p>
+      <p class="pie__dato pie__dato--api">Datos: <a href="https://ghibliapi.vercel.app" target="_blank" rel="noopener">Studio Ghibli API</a></p>
       <p class="pie__dato pie__dato--instituto">Diseño Web 2026 · ISFT N° 194</p>
     </div>
   </footer>

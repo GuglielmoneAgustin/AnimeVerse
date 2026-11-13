@@ -1,69 +1,59 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" width="480" height="480">
   <defs>
     <linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#1e1b4b"/>
-      <stop offset="0.6" stop-color="#1e293b"/>
-      <stop offset="1" stop-color="#0f172a"/>
+      <stop offset="0" stop-color="#8ecae6"/>
+      <stop offset="1" stop-color="#d7eef7"/>
     </linearGradient>
-    <linearGradient id="acento" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#f43f5e"/>
-      <stop offset="1" stop-color="#38bdf8"/>
+    <linearGradient id="sobre" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f2a191"/>
+      <stop offset="1" stop-color="#f7c6b9"/>
     </linearGradient>
-    <radialGradient id="brillo">
-      <stop offset="0" stop-color="#f43f5e" stop-opacity="0.55"/>
-      <stop offset="1" stop-color="#f43f5e" stop-opacity="0"/>
-    </radialGradient>
   </defs>
 
-  <!-- Cielo y luna -->
+  <!-- Cielo y sol -->
   <rect width="480" height="480" rx="24" fill="url(#cielo)"/>
-  <circle cx="360" cy="110" r="110" fill="url(#brillo)"/>
-  <circle cx="360" cy="110" r="52" fill="#f43f5e"/>
-  <g fill="#f1f5f9">
-    <circle cx="60" cy="60" r="2"/><circle cx="140" cy="40" r="1.5"/><circle cx="220" cy="80" r="2"/>
-    <circle cx="90" cy="140" r="1.5"/><circle cx="270" cy="30" r="1.5"/><circle cx="440" cy="200" r="2"/>
-    <circle cx="30" cy="250" r="1.5"/><circle cx="190" cy="160" r="1.2"/>
+  <circle cx="380" cy="95" r="42" fill="#fff4c9"/>
+
+  <!-- Nubes -->
+  <g fill="#ffffff">
+    <ellipse cx="110" cy="90" rx="58" ry="24"/>
+    <ellipse cx="150" cy="74" rx="38" ry="26"/>
+    <ellipse cx="80" cy="78" rx="28" ry="20"/>
+    <ellipse cx="300" cy="160" rx="46" ry="18"/>
+    <ellipse cx="330" cy="148" rx="30" ry="20"/>
   </g>
 
-  <!-- Pétalos -->
-  <g fill="#f9a8d4" opacity="0.85">
-    <ellipse cx="80" cy="100" rx="8" ry="4.5" transform="rotate(30 80 100)"/>
-    <ellipse cx="170" cy="120" rx="7" ry="4" transform="rotate(-20 170 120)"/>
-    <ellipse cx="50" cy="210" rx="8" ry="4.5" transform="rotate(50 50 210)"/>
-    <ellipse cx="430" cy="280" rx="7" ry="4" transform="rotate(10 430 280)"/>
-    <ellipse cx="300" cy="190" rx="6" ry="3.5" transform="rotate(-40 300 190)"/>
+  <!-- Colinas -->
+  <path d="M0 330 C90 280 170 300 250 330 C330 360 400 300 480 315 L480 480 L0 480 Z" fill="#a7c9a0"/>
+  <path d="M0 390 C110 350 200 370 290 395 C370 418 430 380 480 385 L480 480 L0 480 Z" fill="#8bb884"/>
+
+  <!-- Casita -->
+  <g transform="translate(360 290)">
+    <rect x="0" y="22" width="56" height="40" fill="#fffaf0"/>
+    <path d="M-8 26 L28 0 L64 26 Z" fill="#d9705b"/>
+    <rect x="22" y="38" width="14" height="24" fill="#8a5a44"/>
+    <rect x="6" y="32" width="11" height="11" fill="#8ecae6"/>
   </g>
 
-  <!-- Ciudad -->
-  <g fill="#334155">
-    <rect x="0" y="360" width="60" height="120"/>
-    <rect x="55" y="330" width="45" height="150"/>
-    <rect x="100" y="380" width="70" height="100"/>
-    <rect x="300" y="350" width="55" height="130"/>
-    <rect x="350" y="310" width="50" height="170"/>
-    <rect x="400" y="370" width="80" height="110"/>
-  </g>
-  <g fill="#38bdf8" opacity="0.7">
-    <rect x="65" y="345" width="8" height="8"/><rect x="82" y="365" width="8" height="8"/>
-    <rect x="360" y="325" width="8" height="8"/><rect x="378" y="350" width="8" height="8"/>
-    <rect x="360" y="380" width="8" height="8"/><rect x="315" y="370" width="8" height="8"/>
-  </g>
+  <!-- Árbol -->
+  <rect x="62" y="300" width="10" height="34" fill="#8a5a44"/>
+  <circle cx="67" cy="292" r="26" fill="#6fa36a"/>
 
   <!-- Sobre -->
   <g transform="translate(150 200)">
-    <rect x="0" y="0" width="180" height="125" rx="12" fill="url(#acento)"/>
-    <path d="M6 10 L90 78 L174 10" fill="none" stroke="#0f172a" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>
-    <circle cx="178" cy="2" r="24" fill="#f1f5f9"/>
-    <path d="M166 2 h24 M178 -10 v24" stroke="#f43f5e" stroke-width="5" stroke-linecap="round"/>
+    <rect x="0" y="0" width="180" height="125" rx="14" fill="url(#sobre)"/>
+    <path d="M8 12 L90 78 L172 12" fill="none" stroke="#2f3e46" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+    <circle cx="176" cy="4" r="24" fill="#ffffff"/>
+    <path d="M164 4 h24 M176 -8 v24" stroke="#d9705b" stroke-width="5" stroke-linecap="round"/>
   </g>
 
   <!-- Avión de papel y estela -->
-  <path d="M60 300 C110 260 120 200 175 170" fill="none" stroke="#f1f5f9" stroke-width="3" stroke-dasharray="8 8" opacity="0.6"/>
-  <g transform="translate(175 150) rotate(-25)">
-    <path d="M0 20 L60 0 L22 30 Z" fill="#f1f5f9"/>
-    <path d="M22 30 L60 0 L30 42 Z" fill="#cbd5e1"/>
+  <path d="M70 250 C110 220 130 180 180 165" fill="none" stroke="#ffffff" stroke-width="3" stroke-dasharray="8 8"/>
+  <g transform="translate(180 145) rotate(-25)">
+    <path d="M0 20 L60 0 L22 30 Z" fill="#ffffff"/>
+    <path d="M22 30 L60 0 L30 42 Z" fill="#dbe6ea"/>
   </g>
 
   <!-- Texto -->
-  <text x="240" y="440" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="38" font-weight="700" fill="#f1f5f9" text-anchor="middle">¡Escribinos!</text>
+  <text x="240" y="448" font-family="Fredoka, Trebuchet MS, Segoe UI, sans-serif" font-size="38" font-weight="600" fill="#2f3e46" text-anchor="middle">¡Escribinos!</text>
 </svg>
