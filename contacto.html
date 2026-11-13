@@ -3,17 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Formulario de contacto de AnimeVerse.">
+  <meta name="description" content="Formulario de contacto de AnimeVerse, el ranking de Studio Ghibli.">
   <title>AnimeVerse | Contacto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&amp;family=Nunito:wght@400;600;700&amp;display=swap">
   <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
   <header class="encabezado">
     <div class="contenedor encabezado__interno">
       <a class="logo" href="index.html">
-        <span class="logo__icono" aria-hidden="true">★</span>
+        <span class="logo__icono" aria-hidden="true">☁</span>
         <span class="logo__texto">Anime<span>Verse</span></span>
-        <small class="logo__lema">El ranking de MyAnimeList</small>
+        <small class="logo__lema">El ranking de Studio Ghibli</small>
       </a>
       <nav aria-label="Navegación principal">
         <ul class="menu">
@@ -28,12 +31,12 @@
   <main class="contenedor">
     <section class="hero">
       <h1>Contacto</h1>
-      <p>¿Querés recomendarnos un anime o reportar un error? Escribinos.</p>
+      <p>¿Querés contarnos cuál es tu película de Ghibli favorita o reportar un error? Escribinos.</p>
     </section>
 
     <div class="contacto">
       <figure class="contacto__imagen">
-        <img src="img/contacto.svg" alt="Ilustración de una ciudad de noche con un sobre y un avión de papel" width="480" height="480">
+        <img src="img/contacto.svg" alt="Ilustración de un campo verde con nubes, una casita y un sobre con un avión de papel" width="480" height="480">
       </figure>
 
       <form id="formulario" class="formulario" novalidate>
@@ -53,14 +56,15 @@
         </div>
 
         <div class="campo">
-          <label for="genero">Género favorito *</label>
-          <select id="genero" name="genero">
+          <label for="pelicula">Película favorita *</label>
+          <select id="pelicula" name="pelicula">
             <option value="">Elegí una opción…</option>
-            <option value="shonen">Shōnen</option>
-            <option value="seinen">Seinen</option>
-            <option value="shojo">Shōjo</option>
-            <option value="isekai">Isekai</option>
-            <option value="mecha">Mecha</option>
+            <option value="chihiro">El viaje de Chihiro</option>
+            <option value="totoro">Mi vecino Totoro</option>
+            <option value="mononoke">La princesa Mononoke</option>
+            <option value="castillo">El castillo ambulante</option>
+            <option value="kiki">Kiki: entregas a domicilio</option>
+            <option value="otra">Otra</option>
           </select>
         </div>
 
@@ -92,7 +96,7 @@
     <div class="contenedor">
       <p class="pie__dato pie__dato--equipo"><strong>Integrantes:</strong> Agustín Guglielmone · Natanael Zubiri</p>
       <p class="pie__dato pie__dato--github"><a href="https://github.com/GuglielmoneAgustin/AnimeVerse" target="_blank" rel="noopener">Repositorio en GitHub</a></p>
-      <p class="pie__dato pie__dato--api">Datos: <a href="https://jikan.moe" target="_blank" rel="noopener">Jikan API (MyAnimeList)</a></p>
+      <p class="pie__dato pie__dato--api">Datos: <a href="https://ghibliapi.vercel.app" target="_blank" rel="noopener">Studio Ghibli API</a></p>
       <p class="pie__dato pie__dato--instituto">Diseño Web 2026 · ISFT N° 194</p>
     </div>
   </footer>
