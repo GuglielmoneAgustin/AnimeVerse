@@ -1,19 +1,21 @@
 // pedirDatos.js: único archivo que conoce la URL de la API.
-import Anime from './Anime.js';
+import Pelicula from './Pelicula.js';
 
-// Top de animes de MyAnimeList; limit=12 define cuántos trae (el TP pide mínimo 6)
-const URL_API = 'https://api.jikan.moe/v4/top/anime?limit=12';
+const URL_API = 'https://ghibliapi.vercel.app/films';
 
-// Hace el GET a Jikan y devuelve un array de objetos Anime.
-// Si falla, lanza un error que se maneja en app.js.
-export async function traerAnimes() {
+// Hace el GET a la API de Studio Ghibli y devuelve todas las películas,
+// ordenadas por puntaje, como objetos Pelicula. Si falla, lanza un error que se maneja en app.js.
+export async function traerPeliculas() {
   const respuesta = await fetch(URL_API);
 
   // Con un 404 o 500 fetch no falla solo: hay que revisar respuesta.ok
   if (!respuesta.ok) throw new Error('Error HTTP ' + respuesta.status);
 
-  const json = await respuesta.json();
+  // En esta API el JSON ya es el array de películas (no viene dentro de una propiedad)
+  const peliculas = await respuesta.json();
 
-  // En Jikan la lista viene dentro de la propiedad "data"
-  return json.data.map((dato) => new Anime(dato));
+  // Se ordenan de mayor a menor puntaje; la posición en la lista es el ranking
+  return peliculas
+    .sort((a, b) => Number(b.rt_score) - Number(a.rt_score))
+    .map((dato, indice) => new Pelicula(dato, indice + 1));
 }
