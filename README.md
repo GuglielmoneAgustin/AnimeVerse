@@ -1,6 +1,6 @@
 # AnimeVerse · TP Final Diseño Web 2026
 
-Sitio web de 3 páginas que consume la **API Jikan (MyAnimeList)** y muestra el top de animes en cards responsive.
+Sitio web de 3 páginas que consume la **Studio Ghibli API** y muestra el ranking de las películas del estudio en cards responsive.
 
 **ISFT N° 194 · Diseño Web 2026 · 2.º año** — Prof. Mauro Gonzalo Triaca
 
@@ -10,18 +10,18 @@ Sitio web de 3 páginas que consume la **API Jikan (MyAnimeList)** y muestra el 
 
 | Integrante | Rol | Responsabilidades |
 |---|---|---|
-| Agustín Guglielmone | Consumo de la API y JavaScript | Fetch a Jikan, clase `Anime`, estados loading/success/error, renderizado de cards, validación del formulario |
+| Agustín Guglielmone | Consumo de la API y JavaScript | Fetch a la Studio Ghibli API, clase `Pelicula`, estados loading/success/error, renderizado de cards, validación del formulario |
 | Natanael Zubiri | Maquetación HTML/CSS y documentación | Estructura semántica, paleta de colores, grid responsive, diseño de cards, README |
 
 ## Páginas
 
 | Archivo | Contenido |
 |---|---|
-| `index.html` | Home: 12 cards con el top de animes en grid de 1 · 2 · 3 columnas |
+| `index.html` | Home: 22 cards con todas las películas, ordenadas por puntaje, en grid de 1 · 2 · 3 columnas |
 | `contacto.html` | Formulario validado con JavaScript (alerts + reset) e imagen temática |
 | `about.html` | Equipo con foto, nombre y rol; temática, API y decisiones técnicas |
 
-Las 3 páginas comparten navegación y footer (integrantes + repositorio + API).
+Las 3 páginas comparten navegación y footer (integrantes, repositorio, API, materia e instituto).
 
 ## Estructura del proyecto
 
@@ -40,68 +40,62 @@ tp-final/
 └── js/
     ├── app.js          # Punto de entrada del Home: orden de los estados
     ├── pedirDatos.js   # Único archivo que conoce la URL de la API
-    ├── Anime.js        # Clase que modela los datos de la API
+    ├── Pelicula.js     # Clase que modela los datos de la API
     ├── dibujar.js      # Único archivo que crea elementos en el DOM
     └── contacto.js     # Validación del formulario
 ```
 
-## API utilizada: Jikan v4
+## API utilizada: Studio Ghibli API
 
-- **Documentación:** https://docs.api.jikan.moe/
-- **Endpoint:** `GET https://api.jikan.moe/v4/top/anime?limit=12`
+- **Sitio:** https://ghibliapi.vercel.app
+- **Endpoint:** `GET https://ghibliapi.vercel.app/films`
 - **Registro / API key:** no requiere
-- **Límite:** 3 pedidos por segundo · 60 por minuto
-- **Dónde viene la lista:** dentro de la propiedad `data`
-- **Pedidos necesarios:** uno solo (cada anime ya trae su imagen y sus datos)
+- **Cantidad de datos:** 22 películas
+- **Dónde viene la lista:** directa (el JSON ya es el array)
+- **Pedidos necesarios:** uno solo (cada película ya trae su póster y sus datos)
 
 ### Estructura de la respuesta (abreviada)
 
 ```json
-{
-  "pagination": { "current_page": 1, "has_next_page": true },
-  "data": [
-    {
-      "mal_id": 52991,
-      "rank": 1,
-      "title": "Sousou no Frieren",
-      "title_english": "Frieren: Beyond Journey's End",
-      "images": {
-        "jpg":  { "image_url": "...", "large_image_url": "..." },
-        "webp": { "image_url": "...", "large_image_url": "..." }
-      },
-      "type": "TV",
-      "episodes": 28,
-      "score": 9.24,
-      "genres": [
-        { "mal_id": 2, "name": "Adventure" },
-        { "mal_id": 8, "name": "Drama" }
-      ],
-      "synopsis": "..."
-    }
-  ]
-}
+[
+  {
+    "id": "dc2e6bd1-8156-4886-adff-b39e6043af0c",
+    "title": "Spirited Away",
+    "original_title": "千と千尋の神隠し",
+    "original_title_romanised": "Sen to Chihiro no kamikakushi",
+    "image": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg",
+    "description": "Spirited Away is an Oscar winning Japanese animated film...",
+    "director": "Hayao Miyazaki",
+    "producer": "Toshio Suzuki",
+    "release_date": "2001",
+    "running_time": "124",
+    "rt_score": "97"
+  }
+]
 ```
 
 ### Campos usados en cada card
 
-| Campo de la API | Propiedad en `Anime` | Uso en la card |
+| Campo de la API | Propiedad en `Pelicula` | Uso en la card |
 |---|---|---|
-| `images.webp.large_image_url` | `imagen` | Imagen formato póster (3:4) |
-| `title_english` / `title` | `titulo` | Campo principal |
-| `type` + `episodes` | `tipo`, `episodios` | Campo secundario |
-| `genres[].name` | `generos` | Tercer campo |
-| `rank` | `ranking` | Etiqueta superior izquierda |
-| `score` | `puntaje` | Etiqueta superior derecha |
+| `image` | `imagen` | Póster en formato 3:4 |
+| `title` | `titulo` | Campo principal |
+| `director` + `release_date` | `director`, `anio` | Campo secundario |
+| `original_title_romanised` + `running_time` | `tituloOriginal`, `duracion` | Tercer campo |
+| `rt_score` | `puntaje` | Etiqueta superior derecha |
+| — (se calcula) | `ranking` | Etiqueta superior izquierda |
+
+La API no trae un ranking: en `pedirDatos.js` las películas se ordenan por `rt_score` (puntaje de la crítica en Rotten Tomatoes) de mayor a menor y se numeran según su posición.
 
 ### Flujo de los datos
 
 ```
-index.html → app.js → pedirDatos.js → fetch(Jikan) → json.data → new Anime(dato) → dibujar.js → cards en el DOM
+index.html → app.js → pedirDatos.js → fetch(API) → ordenar por puntaje → new Pelicula(dato, ranking) → dibujar.js → cards en el DOM
 ```
 
 ### Estados
 
-1. **Loading:** spinner y texto "Cargando animes..." mientras se espera la respuesta.
+1. **Loading:** spinner y texto "Cargando películas..." mientras se espera la respuesta.
 2. **Success:** se renderizan las cards con `createElement` + `textContent`.
 3. **Error:** si no hay conexión o `respuesta.ok` es `false`, se muestra un mensaje con botón **Reintentar**.
 
@@ -109,13 +103,14 @@ index.html → app.js → pedirDatos.js → fetch(Jikan) → json.data → new A
 
 | Variable | Color | Uso |
 |---|---|---|
-| `--color-fondo` | `#0f172a` | Fondo azul noche |
-| `--color-superficie` | `#1e293b` | Cards y formularios |
-| `--color-texto` | `#f1f5f9` | Texto principal |
-| `--color-primario` | `#f43f5e` | Acento rosa sakura (botones, ranking, hover) |
-| `--color-secundario` | `#38bdf8` | Acento celeste neón (puntaje, enlaces) |
+| `--color-fondo` | `#f3f8f1` | Fondo verde menta |
+| `--color-superficie` | `#ffffff` | Cards, header y formulario |
+| `--color-texto` | `#2f3e46` | Texto principal |
+| `--color-primario` | `#f2a191` | Acento durazno (botones, ranking, hover) |
+| `--color-secundario` | `#8ecae6` | Acento celeste cielo (puntaje, bordes) |
+| `--color-primario-oscuro` / `--color-secundario-oscuro` | `#b5533f` / `#2f7ea3` | Versiones oscuras de los acentos para textos y enlaces legibles |
 
-La paleta se inspira en los posters de anime y las ciudades nocturnas japonesas: fondo oscuro para que resalten las portadas y dos acentos neón. Las cards tienen bordes redondeados, imagen en formato póster y un hover con elevación, escala y brillo rosado.
+Siguiendo la consigna (Ghibli → tonos suaves y pasteles), la paleta toma los cielos, campos y atardeceres de las películas. Las tipografías redondeadas (**Fredoka** para títulos y **Nunito** para texto) acompañan el estilo amable del estudio. Las cards tienen bordes redondeados, el póster en formato 3:4 y un hover con elevación, escala y sombra durazno.
 
 ## Aspectos técnicos
 
