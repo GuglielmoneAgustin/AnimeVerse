@@ -2,20 +2,22 @@
    1. VARIABLES
    ========================================================== */
 :root {
-  /* Colores */
-  --color-fondo: #0f172a;
-  --color-superficie: #1e293b;
-  --color-borde: #334155;
-  --color-texto: #f1f5f9;
-  --color-texto-suave: #94a3b8;
-  --color-primario: #f43f5e;
-  --color-secundario: #38bdf8;
-  --color-exito: #22c55e;
-  --color-error: #f87171;
+  /* Colores: pasteles inspirados en los cielos y campos de Studio Ghibli */
+  --color-fondo: #f3f8f1;
+  --color-superficie: #ffffff;
+  --color-borde: #d9e6d5;
+  --color-pie: #e3eedf;
+  --color-texto: #2f3e46;
+  --color-texto-suave: #5c6f6a;
+  --color-primario: #f2a191;
+  --color-primario-oscuro: #b5533f;
+  --color-secundario: #8ecae6;
+  --color-secundario-oscuro: #2f7ea3;
+  --color-error: #c0392b;
 
-  /* Tipografía */
-  --fuente: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
-  --fuente-titulos: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+  /* Tipografía (Google Fonts, con respaldo del sistema) */
+  --fuente: "Nunito", "Segoe UI", system-ui, sans-serif;
+  --fuente-titulos: "Fredoka", "Trebuchet MS", system-ui, sans-serif;
 
   /* Espacios y bordes */
   --espacio-xs: 0.25rem;
@@ -27,8 +29,8 @@
   --radio-s: 8px;
 
   /* Efectos */
-  --sombra: 0 6px 20px rgba(0, 0, 0, 0.35);
-  --sombra-hover: 0 14px 34px rgba(244, 63, 94, 0.35);
+  --sombra: 0 6px 20px rgba(47, 62, 70, 0.12);
+  --sombra-hover: 0 14px 30px rgba(242, 161, 145, 0.45);
   --transicion: 0.3s ease;
 }
 
@@ -57,8 +59,8 @@ body {
   color: var(--color-texto);
   background-color: var(--color-fondo);
   background-image:
-    radial-gradient(circle at 10% 0%, rgba(244, 63, 94, 0.15), transparent 40%),
-    radial-gradient(circle at 90% 30%, rgba(56, 189, 248, 0.12), transparent 40%);
+    radial-gradient(circle at 10% 0%, rgba(242, 161, 145, 0.25), transparent 40%),
+    radial-gradient(circle at 90% 30%, rgba(142, 202, 230, 0.3), transparent 40%);
   background-attachment: fixed;
 }
 
@@ -69,13 +71,14 @@ img {
 }
 
 a {
-  color: var(--color-secundario);
+  color: var(--color-secundario-oscuro);
 }
 
 h1,
 h2,
 h3 {
   font-family: var(--fuente-titulos);
+  font-weight: 600;
   line-height: 1.2;
 }
 
@@ -86,8 +89,8 @@ ul {
 code {
   padding: 0 var(--espacio-xs);
   font-size: 0.9em;
-  color: var(--color-secundario);
-  background: rgba(56, 189, 248, 0.1);
+  color: var(--color-secundario-oscuro);
+  background: rgba(142, 202, 230, 0.2);
   border-radius: 4px;
 }
 
@@ -112,8 +115,9 @@ main {
   position: relative;
   z-index: 10;
   padding: var(--espacio) 0;
-  background: rgba(11, 17, 32, 0.9);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(10px);
+  box-shadow: var(--sombra);
 }
 
 /* Línea inferior con el degradé de los dos acentos */
@@ -153,8 +157,8 @@ main {
   font-size: 1.3rem;
   color: #fff;
   background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
-  border-radius: var(--radio-s);
-  box-shadow: 0 0 18px rgba(244, 63, 94, 0.45);
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(242, 161, 145, 0.5);
   transition: transform var(--transicion);
 }
 
@@ -170,7 +174,7 @@ main {
 }
 
 .logo__texto span {
-  color: var(--color-primario);
+  color: var(--color-primario-oscuro);
 }
 
 .logo__lema {
@@ -224,13 +228,11 @@ main {
 }
 
 .menu__link.activo {
-  color: var(--color-texto);
-  text-shadow: 0 0 12px rgba(244, 63, 94, 0.6);
+  color: var(--color-primario-oscuro);
 }
 
 .menu__link.activo::after {
   transform: scaleX(1);
-  box-shadow: 0 0 10px rgba(244, 63, 94, 0.7);
 }
 
 /* --- Hero --- */
@@ -242,7 +244,7 @@ main {
 .hero h1 {
   margin-bottom: var(--espacio-s);
   font-size: 1.8rem;
-  background: linear-gradient(90deg, var(--color-primario), var(--color-secundario));
+  background: linear-gradient(90deg, var(--color-primario-oscuro), var(--color-secundario-oscuro));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -298,7 +300,7 @@ main {
   padding: var(--espacio-l);
   border: 1px solid var(--color-error);
   border-radius: var(--radio);
-  background: rgba(248, 113, 113, 0.1);
+  background: rgba(192, 57, 43, 0.06);
 }
 
 .error p {
@@ -310,11 +312,11 @@ main {
 .boton {
   padding: var(--espacio-s) var(--espacio-l);
   font: inherit;
-  font-weight: 600;
-  color: #fff;
+  font-weight: 700;
+  color: var(--color-texto);
   background: var(--color-primario);
   border: 2px solid var(--color-primario);
-  border-radius: var(--radio-s);
+  border-radius: 999px;
   cursor: pointer;
   transition: transform var(--transicion), background var(--transicion);
 }
@@ -322,7 +324,7 @@ main {
 .boton:hover,
 .boton:focus-visible {
   transform: translateY(-2px);
-  background: #e11d48;
+  background: #ec8b78;
 }
 
 .boton--secundario {
@@ -376,9 +378,9 @@ main {
   z-index: 1;
   padding: var(--espacio-xs) var(--espacio-s);
   font-weight: 700;
-  color: #fff;
+  color: var(--color-texto);
   background: var(--color-primario);
-  border-radius: var(--radio-s);
+  border-radius: 999px;
 }
 
 .card__puntaje {
@@ -388,9 +390,9 @@ main {
   z-index: 1;
   padding: var(--espacio-xs) var(--espacio-s);
   font-weight: 700;
-  color: var(--color-fondo);
+  color: var(--color-texto);
   background: var(--color-secundario);
-  border-radius: var(--radio-s);
+  border-radius: 999px;
 }
 
 .card__cuerpo {
@@ -406,10 +408,11 @@ main {
 
 .card__detalle {
   font-size: 0.95rem;
-  color: var(--color-secundario);
+  font-weight: 600;
+  color: var(--color-secundario-oscuro);
 }
 
-.card__generos {
+.card__extra {
   font-size: 0.85rem;
   color: var(--color-texto-suave);
 }
@@ -535,8 +538,8 @@ main {
 
 .integrante__rol {
   margin-bottom: var(--espacio-s);
-  font-weight: 600;
-  color: var(--color-secundario);
+  font-weight: 700;
+  color: var(--color-secundario-oscuro);
 }
 
 .integrante p:last-child {
@@ -565,7 +568,7 @@ main {
 
 .info__bloque h3 {
   margin-bottom: var(--espacio-s);
-  color: var(--color-primario);
+  color: var(--color-primario-oscuro);
 }
 
 .info__bloque ul {
@@ -579,7 +582,7 @@ main {
   font-size: 0.85rem;
   text-align: center;
   color: var(--color-texto-suave);
-  background: #0b1120;
+  background: var(--color-pie);
   border-top: 3px solid var(--color-primario);
 }
 
@@ -598,7 +601,7 @@ main {
   margin-right: var(--espacio-s);
   width: 1.3rem;
   height: 1.3rem;
-  background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
+  background: linear-gradient(135deg, var(--color-primario-oscuro), var(--color-secundario-oscuro));
   -webkit-mask: var(--icono) center / contain no-repeat;
   mask: var(--icono) center / contain no-repeat;
 }
